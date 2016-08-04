@@ -53,27 +53,22 @@ public class PendientesController {
         return new ResponseEntity<Pendiente>(pendientes, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/pendientes", method = RequestMethod.POST, consumes = "application/json", headers = "content-type=application/x-www-form-urlencoded")
-    public ResponseEntity createPendiente(@RequestBody Pendiente pend, UriComponentsBuilder ucBuilder) {
+    @RequestMapping(value = "/pendientes", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Pendiente> createPendiente(@RequestBody Pendiente pend) {
         pendientesService.savePendiente(pend);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/pendientes/{id}").buildAndExpand(pend.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<Pendiente>(pend, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/pendientes/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> updatePendiente(@RequestBody Pendiente pendiente, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<Pendiente> updatePendiente(@RequestBody Pendiente pendiente) {
         pendientesService.savePendiente(pendiente);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/pendientes/{id}").buildAndExpand(pendiente.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.ACCEPTED);
+        return new ResponseEntity<Pendiente>(pendiente, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/pendientes/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> deletePendiente(@PathVariable("id") Long id, @RequestBody Pendiente pendiente,UriComponentsBuilder ucBuilder) {
+    public void deletePendiente(@PathVariable("id") Long id, @RequestBody Pendiente pendiente, UriComponentsBuilder ucBuilder) {
         pendientesService.deletePendiente(pendiente);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/pendientes/{id}").buildAndExpand(pendiente.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.ACCEPTED);
     }
 }

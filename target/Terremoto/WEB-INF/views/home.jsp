@@ -16,7 +16,12 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
         <!-- Latest compiled and minified JavaScript -->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
         <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
         <!-- Latest compiled and minified CSS -->
@@ -175,10 +180,10 @@ and open the template in the editor.
 
     function onAgregar() {
         if ($("#txtNombre").val() === "") {
-            alert("Agregar un valor");
+            $("<div title='Terremoto'>El campo nombre no puede ir vacio</div>").dialog();
             return;
         } else if ($("#txtFechaAlta").val() === "") {
-            alert("Agregar un fecha");
+            $("<div title='Terremoto'>El campo fecha no puede ir vacio</div>").dialog();
             return;
         }
         var jsonParameter = {"nombre": $("#txtNombre").val(), "estatus": "1", "fechaAlta": $("#txtFechaAlta").val()};
@@ -231,10 +236,10 @@ and open the template in the editor.
     function onUpdate() {
         var id = $("#txtIdPendiente").val();
         if ($("#txtNombre").val() === "") {
-            alert("Agregar un valor");
+            $("<div title='Terremoto'>El campo nombre no puede ir vacio</div>").dialog();
             return;
         } else if ($("#txtFechaAlta").val() === "") {
-            alert("Agregar un fecha");
+            $("<div title='Terremoto'>El campo fecha no puede ir vacio</div>").dialog();
             return;
         }
         var jsonParameter = {"id": id, "nombre": $("#txtNombre").val(), "estatus": "1", "fechaAlta": $("#txtFechaAlta").val()};

@@ -123,7 +123,7 @@ and open the template in the editor.
      */
     $(document).ready(function () {
         var oTable = $('#jsontable').dataTable();
-        $.ajax({url: 'http://localhost:8084/Terremoto/pendientes/', dataType: 'json',
+        $.ajax({url: 'http://localhost:8080/Terremoto/pendientes/', dataType: 'json',
             success: function (s) {
                 console.log(s);
                 oTable.fnClearTable();
@@ -187,7 +187,7 @@ and open the template in the editor.
             return;
         }
         var jsonParameter = {"nombre": $("#txtNombre").val(), "estatus": "1", "fechaAlta": $("#txtFechaAlta").val()};
-        $.ajax({url: 'http://localhost:8084/Terremoto/pendientes',
+        $.ajax({url: 'http://localhost:8080/Terremoto/pendientes',
             type: "POST",
             dataType: 'json',
             beforeSend: function (xhrObj) {
@@ -214,7 +214,7 @@ and open the template in the editor.
         var id = $("#txtIdPendiente").val();
         var jsonParameter = {"id": $("#txtIdPendiente").val()};
         $.ajax({
-            url: 'http://localhost:8084/Terremoto/pendientes/' + id + '',
+            url: 'http://localhost:8080/Terremoto/pendientes/' + id + '',
             type: 'DELETE',
             beforeSend: function (xhrObj) {
                 xhrObj.setRequestHeader("Content-Type", "application/json");
@@ -244,7 +244,7 @@ and open the template in the editor.
         }
         var jsonParameter = {"id": id, "nombre": $("#txtNombre").val(), "estatus": "1", "fechaAlta": $("#txtFechaAlta").val()};
         $.ajax({
-            url: 'http://localhost:8084/Terremoto/pendientes/' + id + '',
+            url: 'http://localhost:8080/Terremoto/pendientes/' + id + '',
             type: 'POST',
             beforeSend: function (xhrObj) {
                 xhrObj.setRequestHeader("Content-Type", "application/json");
@@ -265,7 +265,7 @@ and open the template in the editor.
 
     function recargar() {
         var oTable = $('#jsontable').dataTable();
-        $.ajax({url: 'http://localhost:8084/Terremoto/pendientes/', dataType: 'json',
+        $.ajax({url: 'http://localhost:8080/Terremoto/pendientes/', dataType: 'json',
             success: function (s) {
                 console.log(s);
                 oTable.fnClearTable();
